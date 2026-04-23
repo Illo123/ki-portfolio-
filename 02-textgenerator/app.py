@@ -1,8 +1,20 @@
 from flask import Flask, request, Response, send_from_directory
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from werkzeug.middleware.proxy_fix import ProxyFix
 import anthropic
 import json
 
 app = Flask(__name__, static_folder='.', static_url_path='')
+# Render terminates TLS and sets X-Forwarded-For — trust one hop so rate-limit keys use the real client IP.
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
+
+limiter = Limiter(
+    key_func=get_remote_address,
+    app=app,
+    default_limits=['60 per hour'],
+)
+
 client = anthropic.Anthropic()
 
 VORLAGEN = {
@@ -48,6 +60,7 @@ def index():
     return send_from_directory('.', 'index.html')
 
 @app.route('/generieren', methods=['POST'])
+@limiter.limit('5 per hour; 20 per day')
 def generieren():
     data        = request.get_json()
     empfänger   = data.get('empfänger', 'eltern')
