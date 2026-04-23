@@ -1,0 +1,98 @@
+{
+  "unternehmen": {
+    "name": "Mathewes Coffee & Deli",
+    "gegründet": 2010,
+    "stadt": "Hamburg",
+    "beschreibung": "Hamburger Café- und Bäckereikette mit Fokus auf frischen Kaffee, Frühstück und Mittagessen."
+  },
+
+  "standorte": [
+    {
+      "id": 1,
+      "name": "Coffee & Deli — Perle Hamburg",
+      "adresse": "Gerhard-Hauptmann-Platz 50, Hamburg",
+      "öffnungszeiten": {
+        "Mo–Sa": "08:00 – 20:00",
+        "So": "geschlossen"
+      },
+      "telefon": "040 320 89 888",
+      "besonderheiten": ["Sitzplätze innen", "WLAN", "Catering-Abholung"]
+    },
+    {
+      "id": 2,
+      "name": "Bahnhofsbäcker — BF Harburg",
+      "adresse": "Hannoverschestr. 85, Hamburg-Harburg",
+      "öffnungszeiten": {
+        "Mo–Fr": "04:00 – 19:30",
+        "Sa–So": "04:00 – 19:00"
+      },
+      "besonderheiten": ["Frühester Start", "To-Go", "Bahnhofslage"]
+    },
+    {
+      "id": 3,
+      "name": "Grillstation & ZOB",
+      "adresse": "Hamburg ZOB",
+      "öffnungszeiten": "Auf Anfrage",
+      "besonderheiten": ["Grillspezialitäten", "Busbahnhof"]
+    }
+  ],
+
+  "angebot": {
+    "kaffee": {
+      "beschreibung": "Kaffeespezialitäten aus ausgewählten Bohnen",
+      "produkte": [
+        { "name": "Espresso", "preis": 2.20 },
+        { "name": "Cappuccino", "preis": 3.40 },
+        { "name": "Latte Macchiato", "preis": 3.80 },
+        { "name": "Filterkaffee", "preis": 2.50 },
+        { "name": "Flat White", "preis": 3.60 }
+      ]
+    },
+    "frühstück": {
+      "beschreibung": "Täglich frisch, süß und herzhaft",
+      "produkte": [
+        { "name": "Butter-Croissant", "preis": 2.20 },
+        { "name": "Käsebrötchen", "preis": 2.80 },
+        { "name": "Schinken-Käse-Brötchen", "preis": 3.20 },
+        { "name": "Obstsalat", "preis": 3.90 },
+        { "name": "Rührei auf Toast", "preis": 4.50 },
+        { "name": "Frühstücks-Set (Kaffee + Brötchen)", "preis": 5.50 }
+      ]
+    },
+    "mittagessen": {
+      "beschreibung": "Wechselnde Tagesgerichte, Mo–Fr",
+      "produkte": [
+        { "name": "Tagesgericht (wechselnd)", "preis": 7.90 },
+        { "name": "Suppe des Tages", "preis": 4.50 },
+        { "name": "Hausgemachte Limo", "preis": 2.80 },
+        { "name": "Bio-Tee (Auswahl)", "preis": 2.50 }
+      ]
+    },
+    "catering": {
+      "beschreibung": "Professionelles Catering für Unternehmen und Events in Hamburg",
+      "mindestbestellung": "ab 10 Personen",
+      "angebote": [
+        "Frühstücks-Pakete für Meetings",
+        "Fingerfood & Snack-Boxen",
+        "Kaffee-Flatrate für Veranstaltungen",
+        "Individuelle Menüplanung"
+      ],
+      "kontakt": "info@mathewes-coffee.de oder 040 320 89 888"
+    }
+  },
+
+  "häufige_fragen": [
+    {
+      "frage": "Kann ich online bestellen?",
+      "antwort": "Aktuell nur telefonisch oder per E-Mail für Catering-Anfragen."
+    },
+    {
+      "frage": "Gibt es vegetarische oder vegane Optionen?",
+      "antwort": "Ja, wir haben täglich vegetarische Optionen. Vegane Produkte bitte vor Ort erfragen."
+    },
+    {
+      "frage": "Bietet ihr Lieferservice an?",
+      "antwort": "Aktuell kein Lieferservice, nur Abholung oder Catering-Service vor Ort."
+    }
+  ]
+}

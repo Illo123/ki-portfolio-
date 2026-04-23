@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KI Chatbot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <span class="brand-serif">AI</span>
+        <span class="brand-label">Chat</span>
+      </div>
+      <button class="new-chat-btn" id="newChatBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        Neuer Chat
+      </button>
+    </div>
+
+    <div class="chat-history" id="chatHistory">
+      <p class="history-empty">Noch keine Chats</p>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="model-info">
+        <div class="model-dot"></div>
+        <span>Claude Opus 4.7</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="chat-area" id="chatArea">
+      <div class="welcome" id="welcome">
+        <h1 class="welcome-title">
+          Wie kann ich<br><em>helfen?</em>
+        </h1>
+        <p class="welcome-sub">Stelle mir eine beliebige Frage oder starte ein Gespräch.</p>
+        <div class="suggestions">
+          <button class="suggestion" data-text="Erkläre mir Machine Learning in einfachen Worten.">
+            💡 ML erklären
+          </button>
+          <button class="suggestion" data-text="Schreib mir eine kurze kreative Geschichte über Hamburg.">
+            ✍️ Geschichte schreiben
+          </button>
+          <button class="suggestion" data-text="Was sind die Vorteile von Python gegenüber JavaScript?">
+            💻 Python vs JS
+          </button>
+          <button class="suggestion" data-text="Gib mir 5 Tipps für produktives Arbeiten.">
+            🚀 Produktivitäts-Tipps
+          </button>
+        </div>
+      </div>
+
+      <div class="messages" id="messages"></div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-wrap">
+        <textarea
+          id="userInput"
+          placeholder="Nachricht eingeben…"
+          rows="1"
+          maxlength="4000"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+          </svg>
+        </button>
+      </div>
+      <p class="input-hint">Claude kann Fehler machen. Wichtige Infos bitte überprüfen.</p>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

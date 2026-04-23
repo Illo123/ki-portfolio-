@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LehrerBrief — KI Schreibassistent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-serif">Lehrer</span>
+        <span class="brand-word">Brief</span>
+        <span class="brand-label">KI Schreibassistent</span>
+      </div>
+      <span class="header-badge">Für Lehrkräfte</span>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- LINKE SEITE — FORMULAR -->
+    <section class="panel panel-form">
+
+      <!-- SCHRITT 1: EMPFÄNGER -->
+      <div class="form-block">
+        <div class="block-label"><span class="step">01</span> An wen schreibst du?</div>
+        <div class="recipient-grid">
+          <button class="recipient-btn active" data-value="eltern">
+            <span class="rec-icon">👨‍👩‍👧</span>
+            <span class="rec-name">Eltern</span>
+            <span class="rec-sub">Erziehungsberechtigte</span>
+          </button>
+          <button class="recipient-btn" data-value="schulleitung">
+            <span class="rec-icon">🏫</span>
+            <span class="rec-name">Schulleitung</span>
+            <span class="rec-sub">Direktion / Verwaltung</span>
+          </button>
+          <button class="recipient-btn" data-value="kollegen">
+            <span class="rec-icon">👥</span>
+            <span class="rec-name">Kollegen</span>
+            <span class="rec-sub">Lehrerkollegium</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 2: ANLASS -->
+      <div class="form-block">
+        <div class="block-label"><span class="step">02</span> Was ist der Anlass?</div>
+        <div class="type-list" id="typeList">
+          <!-- wird per JS befüllt -->
+        </div>
+      </div>
+
+      <!-- SCHRITT 3: DETAILS -->
+      <div class="form-block">
+        <div class="block-label"><span class="step">03</span> Details</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="klasse">Klasse / Schüler</label>
+            <input type="text" id="klasse" placeholder="z. B. 8b oder Max Müller" />
+          </div>
+          <div class="field">
+            <label for="ton">Ton</label>
+            <select id="ton">
+              <option value="freundlich">😊 Freundlich</option>
+              <option value="formell">🎩 Formell</option>
+              <option value="sachlich">📋 Sachlich</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="details">Inhalt & Anlass <span class="required">*</span></label>
+          <textarea
+            id="details"
+            placeholder="Was soll der Brief beinhalten? Je mehr Details, desto besser das Ergebnis.&#10;&#10;z. B.: Max fehlt seit 3 Tagen unentschuldigt. Bitte um Kontaktaufnahme bis Freitag."
+            rows="5"
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <label for="absender">Dein Name (Unterschrift)</label>
+          <input type="text" id="absender" placeholder="z. B. Frau Schmidt" />
+        </div>
+      </div>
+
+      <button class="generate-btn" id="generateBtn">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+        <span class="btn-text">Brief generieren</span>
+      </button>
+
+    </section>
+
+    <!-- RECHTE SEITE — ERGEBNIS -->
+    <section class="panel panel-result">
+
+      <div class="result-header">
+        <div class="panel-title">
+          <span class="step">04</span>
+          <h2>Dein Brief</h2>
+        </div>
+        <div class="result-actions" id="resultActions" style="display:none">
+          <button class="action-btn" id="copyBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            Kopieren
+          </button>
+          <button class="action-btn" id="newBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 4v6h6M23 20v-6h-6"/>
+              <path d="M20.49 9A9 9 0 005.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 013.51 15"/>
+            </svg>
+            Neu
+          </button>
+        </div>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">✉️</div>
+        <p>Fülle das Formular links aus —<br>der fertige Brief erscheint hier.</p>
+        <ul class="empty-hints">
+          <li>✓ Lästige Routine-Briefe in Sekunden</li>
+          <li>✓ Professioneller Ton, angepasst auf den Empfänger</li>
+          <li>✓ Direkt kopieren und verschicken</li>
+        </ul>
+      </div>
+
+      <div class="result-box" id="resultBox" style="display:none">
+        <div class="result-meta" id="resultMeta"></div>
+        <div class="result-text" id="resultText"></div>
+        <div class="word-count" id="wordCount"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
