@@ -22,16 +22,21 @@ SSE direkt während der Generierung in die UI gestreamt.
 
 ---
 
-## Mathewes Coffee Chatbot
+## Mathewes Coffee & Deli — Website mit KI-Assistent
 
-Domänenspezifischer Chatbot für einen fiktiven Hamburger Gastro-Betrieb. Claude
-bekommt pro Request die aktuellen Standorte, Öffnungszeiten, Preise und FAQs aus
-einer SQLite-DB als System-Prompt injiziert — Änderungen in der DB wirken sofort,
-ohne Neustart.
+**Live-Demo:** https://mathewes.onrender.com
+
+Komplette Landing-Page für einen fiktiven Hamburger Gastro-Betrieb, inklusive
+eingebettetem Chat-Assistenten (Bubble unten rechts). Claude bekommt pro Request
+die aktuellen Standorte, Öffnungszeiten, Preise und FAQs aus einer SQLite-DB als
+System-Prompt injiziert — Änderungen in der DB wirken sofort, ohne Neustart.
 
 - Quellcode: [`01-chatbot/`](./01-chatbot)
-- Tech: Flask, Anthropic SDK, SQLite, vanilla JS/CSS
-- Status: lokal lauffähig, Live-Deploy folgt
+- Tech: Flask, Anthropic SDK, SQLite, flask-limiter, GSAP + Lenis (Smooth Scroll)
+- Schutz: Rate-Limit (10 Nachrichten/h, 40/d pro IP) + Spending-Limit im Anthropic-Konto
+
+> Gehostet auf Render Free Tier. Nach 15 Min Inaktivität schläft der Service —
+> der erste Request nach langer Pause kann ~30 Sekunden dauern.
 
 ---
 
