@@ -1,7 +1,21 @@
 # KI-Portfolio
 
 Kleine Anwendungen, die zeigen, wie sich die Anthropic-API praktisch einsetzen lässt.
-Stack: Python (Flask) + vanilla JavaScript + Claude Opus 4.7 via Server-Sent Events.
+Stacks: Python (Flask) + vanilla JS mit SSE-Streaming für die Chat- und Brief-Demos,
+Next.js + React + TypeScript für PostBlitz.
+
+---
+
+## PostBlitz — LinkedIn-Posts auf Knopfdruck
+
+Schlanke Web-App, die aus einem gespeicherten Profil (Rolle, Zielgruppe, Tonalität)
+und einem Tagesthema **drei Post-Varianten** generiert — direkt zum Kopieren. Profil
+liegt im `localStorage` des Browsers, der Server ist zustandslos.
+
+- Quellcode: [`03-postblitz/`](./03-postblitz)
+- Tech: Next.js 16 (App Router), React 19, TypeScript, Anthropic SDK
+- Modell: Claude Sonnet 4.6 (ein Roundtrip pro Anfrage, kein Streaming)
+- Schutz: Rate-Limit (2 Anfragen/h, 6/d pro IP) + Spending-Limit im Anthropic-Konto
 
 ---
 
@@ -42,7 +56,7 @@ System-Prompt injiziert — Änderungen in der DB wirken sofort, ohne Neustart.
 
 ## Lokale Entwicklung
 
-Voraussetzungen: Python 3.9+, Umgebungsvariable `ANTHROPIC_API_KEY`.
+Voraussetzungen: Python 3.9+ (für 01/02), Node 20+ (für 03), Umgebungsvariable `ANTHROPIC_API_KEY`.
 
 ```bash
 # LehrerBrief
@@ -54,4 +68,9 @@ python app.py                      # http://localhost:5001
 cd 01-chatbot
 python setup_db.py                 # SQLite-DB neu aufbauen
 python app.py                      # http://localhost:5000
+
+# PostBlitz
+cd 03-postblitz
+npm install
+npm run dev                        # http://localhost:3000
 ```
